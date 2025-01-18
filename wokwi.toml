@@ -1,0 +1,5 @@
+[wokwi]
+version = 1
+firmware = 'build/teclado_vbuzzer.uf2'
+elf = 'build/teclado_vbuzzer.elf'
+gdbServerPort=3333
