@@ -120,10 +120,12 @@ void controlar_leds_buzzer(char tecla) {
         case '#':
             // Frequência de 1500Hz para o buzzer
             for (int i = 0; i < 1000; i++) {
-                gpio_put(BUZZER, true);
-                busy_wait_us(333); // Meio ciclo (0.666ms)
-                gpio_put(BUZZER, false);
-                busy_wait_us(333); // Outro meio ciclo (0.666ms)
+
+                    gpio_put(BUZZER, true);
+                    busy_wait_us(333); // Meio ciclo (0.666ms)
+                    gpio_put(BUZZER, false);
+                    busy_wait_us(333); // Outro meio ciclo (0.666ms)
+                
             }
             break;
         default:
