@@ -1,4 +1,4 @@
-// Padded and checksummed version of: /home/enzo/Imagens/G1-S9-A2/build/pico-sdk/src/rp2040/boot_stage2/bs2_default.bin
+// Padded and checksummed version of: C:/Users/Maiky/Documents/GitHub/g1-s9-a2-embarcatech/build/pico-sdk/src/rp2040/boot_stage2/bs2_default.bin
 
 .cpu cortex-m0plus
 .thumb
