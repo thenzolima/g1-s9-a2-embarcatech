@@ -84,11 +84,11 @@ char pegar_tecla(void) {
     }
 
     // Retorna a tecla pressionada
-    if (colunas_ativas == mascara_coluna[0]) return _valores_matriz[linha * 4 + 0];
-    if (colunas_ativas == mascara_coluna[1]) return _valores_matriz[linha * 4 + 1];
-    if (colunas_ativas == mascara_coluna[2]) return _valores_matriz[linha * 4 + 2];
-    if (colunas_ativas == mascara_coluna[3]) return _valores_matriz[linha * 4 + 3];
-
+    for (int i = 0; i < 4; i++) {
+    if (colunas_ativas == mascara_coluna[i]) {
+        return _valores_matriz[linha * 4 + i];
+    }
+}
     return 0;  // Se não identificar nenhuma tecla
 }
 
