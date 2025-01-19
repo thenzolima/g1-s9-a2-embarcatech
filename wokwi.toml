@@ -1,0 +1,5 @@
+[wokwi]
+version = 1
+firmware = 'build/G1-S9-A2.uf2'
+elf = 'build/G1-S9-A2.elf'
+gdbServerPort=3333
