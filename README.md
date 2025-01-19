@@ -17,8 +17,11 @@ Feito por: Subgrupo 9 do Grupo 1
    ```bash
    cd [nome do repositório clonado]
    ```
-3. Abra com o VSCode
 
+3. Abra com o VSCode
+   
    ```bash
    code .
    ```
+
+4. Com o ambiente configurado, basta abrir o `diagram.json` e executar o emulador
