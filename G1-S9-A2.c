@@ -29,9 +29,8 @@ uint mascara_coluna[4];
 
 // Função para inicializar o teclado
 void inicializar_teclado(uint colunas[4], uint linhas[4], char valores[16]) {
-    for (int i = 0; i < 16; i++) {
-        _valores_matriz[i] = valores[i];
-    }
+    
+    memcpy(_valores_matriz, valores, sizeof(char) * 16);
 
     for (int i = 0; i < 4; i++) {
         _colunas[i] = colunas[i];
