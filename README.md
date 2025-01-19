@@ -24,4 +24,7 @@ Feito por: Subgrupo 9 do Grupo 1
    code .
    ```
 
-4. Com o ambiente configurado, basta abrir o `diagram.json` e executar o emulador
+4. Com o ambiente configurado, basta abrir o `diagram.json` e executar o simulador
+
+---
+Vídeo ensaio: [https://youtu.be/T0pfXUehCqo?si=-p3EEoJWSlmdMfsM](https://youtu.be/T0pfXUehCqo?si=-p3EEoJWSlmdMfsM)
