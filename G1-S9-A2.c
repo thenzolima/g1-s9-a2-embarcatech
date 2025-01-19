@@ -29,25 +29,27 @@ uint mascara_coluna[4];
 
 // Função para inicializar o teclado
 void inicializar_teclado(uint colunas[4], uint linhas[4], char valores[16]) {
-    
-    memcpy(_valores_matriz, valores, sizeof(char) * 16);
+    // Copia os valores fornecidos para a matriz interna
+    memcpy(_valores_matriz, valores, sizeof(_valores_matriz));
+
+    mascara_colunas = 0; // Certifique-se de limpar a máscara antes de iniciar
 
     for (int i = 0; i < 4; i++) {
+        // Inicializa e armazena pinos de colunas e linhas
         _colunas[i] = colunas[i];
         _linhas[i] = linhas[i];
 
+        // Inicializa GPIOs e configura direções
         gpio_init(_colunas[i]);
+        gpio_set_dir(_colunas[i], GPIO_IN); // Configura coluna como entrada
+
         gpio_init(_linhas[i]);
-
-        gpio_set_dir(_colunas[i], GPIO_IN);   // Configura coluna como entrada
-        gpio_set_dir(_linhas[i], GPIO_OUT);  // Configura linha como saída
-
-        gpio_put(_linhas[i], 1);  // Linhas começam em nível alto
+        gpio_set_dir(_linhas[i], GPIO_OUT); // Configura linha como saída
+        gpio_put(_linhas[i], 1); // Linha começa em nível alto
 
         // Atualiza máscaras
-        uint coluna_mask = 1 << _colunas[i];
-        mascara_colunas |= coluna_mask;
-        mascara_coluna[i] = coluna_mask;
+        mascara_coluna[i] = 1 << _colunas[i];
+        mascara_colunas |= mascara_coluna[i];
     }
 }
 
