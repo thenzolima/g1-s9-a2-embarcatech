@@ -29,9 +29,8 @@ uint mascara_coluna[4];
 
 // Função para inicializar o teclado
 void inicializar_teclado(uint colunas[4], uint linhas[4], char valores[16]) {
-    for (int i = 0; i < 16; i++) {
-        _valores_matriz[i] = valores[i];
-    }
+    
+    memcpy(_valores_matriz, valores, sizeof(char) * 16);
 
     for (int i = 0; i < 4; i++) {
         _colunas[i] = colunas[i];
@@ -40,13 +39,15 @@ void inicializar_teclado(uint colunas[4], uint linhas[4], char valores[16]) {
         gpio_init(_colunas[i]);
         gpio_init(_linhas[i]);
 
-        gpio_set_dir(_colunas[i], GPIO_IN);  // Colunas como entrada
-        gpio_set_dir(_linhas[i], GPIO_OUT);  // Linhas como saída
+        gpio_set_dir(_colunas[i], GPIO_IN);   // Configura coluna como entrada
+        gpio_set_dir(_linhas[i], GPIO_OUT);  // Configura linha como saída
 
         gpio_put(_linhas[i], 1);  // Linhas começam em nível alto
 
-        mascara_colunas += (1 << _colunas[i]);
-        mascara_coluna[i] = 1 << _colunas[i];
+        // Atualiza máscaras
+        uint coluna_mask = 1 << _colunas[i];
+        mascara_colunas |= coluna_mask;
+        mascara_coluna[i] = coluna_mask;
     }
 }
 
@@ -83,11 +84,11 @@ char pegar_tecla(void) {
         gpio_put(_linhas[i], 1);
     }
 
-    // Retorna a tecla pressionada
-    if (colunas_ativas == mascara_coluna[0]) return _valores_matriz[linha * 4 + 0];
-    if (colunas_ativas == mascara_coluna[1]) return _valores_matriz[linha * 4 + 1];
-    if (colunas_ativas == mascara_coluna[2]) return _valores_matriz[linha * 4 + 2];
-    if (colunas_ativas == mascara_coluna[3]) return _valores_matriz[linha * 4 + 3];
+    for (int coluna = 0; coluna < 4; coluna++) {
+        if (colunas_ativas == mascara_coluna[coluna]) {
+            return _valores_matriz[linha * 4 + coluna];
+        }
+    }
 
     return 0;  // Se não identificar nenhuma tecla
 }
